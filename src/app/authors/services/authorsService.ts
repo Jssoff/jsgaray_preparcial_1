@@ -6,7 +6,7 @@ export interface Book {
   name: string;
   isbn: string;
   image: string;
-  // Puedes agregar más campos si los necesitas
+  
 }
 
 export interface Author {
@@ -15,7 +15,6 @@ export interface Author {
   name: string;
   description: string;
   image: string;
-  publishingDate?: string; // si aplica
   books: Book[];
 }
 
