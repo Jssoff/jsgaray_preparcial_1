@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/shared/ui/Header";
+import Footer from "@/shared/ui/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,15 +21,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  // ✅ Aquí defines las rutas para el Header global
+  const routes = [
+    { name: "Inicio", path: "/" },
+    { name: "Autores", path: "/authors" },
+    { name: "Crear", path: "/crear" },
+  ];
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Header routes={routes} /> {/* ✅ Aquí usas el Header con rutas */}
         {children}
+        <Footer />
       </body>
     </html>
   );
