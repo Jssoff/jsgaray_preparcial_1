@@ -1,4 +1,3 @@
-// src/modules/authors/services/authorService.ts
 import { fetcher } from "@/shared/services/http";
 
 export interface Book {

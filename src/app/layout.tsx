@@ -24,7 +24,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // ✅ Aquí defines las rutas para el Header global
+
   const routes = [
     { name: "Inicio", path: "/" },
     { name: "Autores", path: "/authors" },
@@ -34,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header routes={routes} /> {/* ✅ Aquí usas el Header con rutas */}
+        <Header routes={routes} /> {}
         {children}
         <Footer />
       </body>

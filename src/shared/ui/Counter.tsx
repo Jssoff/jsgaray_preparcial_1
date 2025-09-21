@@ -1,4 +1,3 @@
-// src/components/Counter.tsx
 "use client"; // Crucial directive! We tell Next.js that this component is interactive.
 
 import { useState } from "react";
