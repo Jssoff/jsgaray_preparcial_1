@@ -19,6 +19,6 @@ export interface Author {
 }
 
 export const fetchAuthors = (): Promise<Author[]> => {
-  // Llama al endpoint GET /api/authors
+
   return fetcher<Author[]>("/api/authors");
 };
