@@ -17,7 +17,3 @@ export interface Author {
   books: Book[];
 }
 
-export const fetchAuthors = (): Promise<Author[]> => {
-
-  return fetcher<Author[]>("/api/authors");
-};

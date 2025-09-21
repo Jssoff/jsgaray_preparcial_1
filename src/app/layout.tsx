@@ -28,7 +28,7 @@ export default function RootLayout({
   const routes = [
     { name: "Inicio", path: "/" },
     { name: "Autores", path: "/authors" },
-    { name: "Crear", path: "/crear" },
+    { name: "Crear Usuario", path: "/crear" },
   ];
 
   return (

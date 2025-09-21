@@ -1,15 +1,32 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useAuthors } from "@/app/authors/hooks/useAuthorsService";
-import { Author } from "@/app/authors/services/authorsService";
-import Modal from "@/shared/ui/Modal";
+import { useEffect, useState } from 'react';
+import { Author } from '@/app/authors/Interfaces/authorsInterface';
+import Modal from '@/shared/ui/Modal';
 
 export default function AuthorsPage() {
-  const { authors, isLoading, error } = useAuthors();
-
+  const [authors, setAuthors] = useState<Author[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAuthor, setSelectedAuthor] = useState<Author | null>(null);
+
+  useEffect(() => {
+    const loadAuthors = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8080/api/authors');
+        if (!response.ok) throw new Error('Error en la respuesta del servidor');
+        const data: Author[] = await response.json();
+        setAuthors(data);
+      } catch (err) {
+        setError('Error al cargar autores');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadAuthors();
+  }, []);
 
   const handleAuthorClick = (author: Author) => {
     setSelectedAuthor(author);
@@ -33,7 +50,7 @@ export default function AuthorsPage() {
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold mb-6">Autores Disponibles</h1>
 
-      {/* Grid de autores */}
+      {}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {authors.map((author) => (
           <div
@@ -42,8 +59,6 @@ export default function AuthorsPage() {
             onClick={() => handleAuthorClick(author)}
           >
             <h2 className="text-xl font-semibold text-center">{author.name}</h2>
-
-            {/* Imagen del autor */}
             {author.image && (
               <img
                 src={author.image}
@@ -55,13 +70,12 @@ export default function AuthorsPage() {
         ))}
       </div>
 
-      {/* Modal con detalles del autor */}
+      {}
       <Modal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        title={selectedAuthor?.name ?? "Detalle del Autor"}
+        title={selectedAuthor?.name ?? 'Detalle del Autor'}
       >
-        {/* Imagen del autor */}
         {selectedAuthor?.image && (
           <img
             src={selectedAuthor.image}
@@ -70,15 +84,12 @@ export default function AuthorsPage() {
           />
         )}
 
-        {/* Descripción */}
         <p>{selectedAuthor?.description}</p>
 
-        {/* Fecha de nacimiento */}
         <p className="mt-4 text-sm text-gray-500">
           Fecha de nacimiento: {selectedAuthor?.birthDate}
         </p>
 
-        {/* Libros del autor */}
         {selectedAuthor?.books?.length ? (
           <div className="mt-4">
             <h3 className="text-lg font-semibold mb-2">Algunos libros:</h3>
