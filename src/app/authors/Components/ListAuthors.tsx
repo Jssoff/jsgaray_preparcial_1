@@ -2,20 +2,18 @@
 
 import React, { useEffect, useState } from 'react';
 import { Author } from '@/app/authors/Interfaces/authorsInterface';
-import AuthorDelete from '@/app/authors/Services/DeleteAuthors';
-import EditAuthors from '@/app/authors/Services/EditAuthors';
-
-interface Props {
-  onAuthorClick?: (author: Author) => void;
-  onDeleteSuccess?: (id: number) => void;
-  containerClassName?: string;
-}
+import AuthorDelete from '@/app/authors/Components/DeleteAuthors';
+import EditAuthors from '@/app/authors/Components/EditAuthors';
 
 export default function AuthorList({
   onAuthorClick,
   onDeleteSuccess,
   containerClassName,
-}: Props) {
+}: {
+  onAuthorClick?: (author: Author) => void;
+  onDeleteSuccess?: (id: number) => void;
+  containerClassName?: string;
+}) {
   const [authors, setAuthors] = useState<Author[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -37,12 +35,10 @@ export default function AuthorList({
     loadAuthors();
   }, []);
 
-
   const handleDeleteSuccess = (id: number) => {
     setAuthors((prev) => prev.filter((a) => a.id !== id));
     onDeleteSuccess?.(id);
   };
-
 
   const handleEditSuccess = (updated: Author) => {
     setAuthors((prev) =>
@@ -58,7 +54,7 @@ export default function AuthorList({
       {authors.map((author) => (
         <li
           key={author.id}
-          className="border p-4 rounded hover:shadow-lg transition cursor-pointer"
+          className="border-4 border-dashed border-[#FFC298] p-4"
           onClick={() => onAuthorClick?.(author)}
           role={onAuthorClick ? 'button' : undefined}
         >
@@ -70,14 +66,15 @@ export default function AuthorList({
             <img
               src={author.image}
               alt={author.name}
-              className="w-32 h-32 object-cover mt-2"
+              className="w-64 h-64 object-cover mt-4 mx-auto"
             />
           )}
 
           {author.birthDate && (
             <p className="text-sm text-gray-500">
-              Fecha de nacimiento: {new Date(author.birthDate).toLocaleDateString()}
-          </p>
+              Fecha de nacimiento:{' '}
+              {new Date(author.birthDate).toLocaleDateString()}
+            </p>
           )}
 
           {author.books && author.books.length > 0 && (
@@ -94,10 +91,7 @@ export default function AuthorList({
           )}
 
           <div className="mt-4 flex flex-col gap-2">
-            {}
             <AuthorDelete id={author.id} onSuccess={handleDeleteSuccess} />
-
-            {}
             <EditAuthors author={author} onSuccess={handleEditSuccess} />
           </div>
         </li>

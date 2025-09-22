@@ -106,7 +106,7 @@ export default function EditAuthors({ author, onCancel, onSave, onSuccess }: Pro
           e.stopPropagation();
           setIsEditing(true);
         }}
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+        className="bg-[#B95E82] text-white py-2 px-4 rounded hover:bg-[#9c4f6e]"
         type="button"
       >
         Editar
@@ -181,7 +181,7 @@ export default function EditAuthors({ author, onCancel, onSave, onSuccess }: Pro
         <button
           type="submit"
           disabled={loading}
-          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded disabled:opacity-50 flex-1"
+          className="bg-[#B95E82] text-white py-2 px-4 rounded hover:bg-[#9c4f6e]"
         >
           {loading ? 'Guardando...' : 'Guardar'}
         </button>

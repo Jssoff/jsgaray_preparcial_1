@@ -1,5 +1,3 @@
-import { fetcher } from "@/shared/services/http";
-
 export interface Book {
   id: number;
   name: string;

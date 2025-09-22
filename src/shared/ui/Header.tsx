@@ -10,7 +10,7 @@ interface Route {
 
 const Header = ({ routes }: { routes: Route[] }) => {
   return (
-    <header className="bg-[#FFC298] text-black p-4 shadow-md">
+    <header className="bg-[#FFC298] text-black p-4">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-3">
           {/* We assume you have a logo.png in the public/ folder. */}

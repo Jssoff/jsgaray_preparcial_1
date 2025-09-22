@@ -16,12 +16,7 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>;
 
 export const AuthorForm = () => {
-  const {
-    register,
-    handleSubmit,
-    setError,
-    formState: { errors, isSubmitting },
-  } = useForm<FormFields>({
+  const {register,handleSubmit,setError,formState: { errors, isSubmitting },} = useForm<FormFields>({
     defaultValues: {
       name: '',
       description: '',
@@ -53,8 +48,11 @@ export const AuthorForm = () => {
   };
 
   return (
-    <div>
-      <form className="w-2/3 p-5 flex flex-col gap-3" onSubmit={handleSubmit(onSubmit)}>
+    <div className="flex justify-center">
+      <form
+        className="w-2/3 max-w-lg p-5 flex flex-col gap-3"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <input
           {...register('name')}
           type="text"
@@ -85,7 +83,11 @@ export const AuthorForm = () => {
         />
         {errors.image && <span className="text-red-500">{errors.image.message}</span>}
 
-        <button disabled={isSubmitting} type="submit" className="bg-yellow-400 text-black font-bold py-2 px-6 rounded hover:bg-yellow-500 disabled:bg-gray-300">
+        <button
+          disabled={isSubmitting}
+          type="submit"
+          className="bg-[#B95E82] text-white py-2 px-4 rounded hover:bg-[#9c4f6e]"
+        >
           {isSubmitting ? 'Cargando...' : 'Crear'}
         </button>
 

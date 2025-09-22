@@ -17,7 +17,7 @@ export default function Home() {
           
             Explora nuevos mundos con nuestros libros.
           </h2>
-          <p className="bg-[#F39F9F] text-black p-4 shadow-md">
+          <p className="bg-[#F39F9F] text-black p-4 ">
             Sumérgete en historias fascinantes y descubre autores que 
             te transportarán a universos llenos de magia, misterio y 
             conocimiento.

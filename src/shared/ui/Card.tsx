@@ -7,7 +7,7 @@ interface CardProps {
 
 const Card = ({ imageUrl }: CardProps) => {
   return (
-    <div className="border rounded-xl shadow-xl overflow-hidden max-w-lg w-full">
+    <div className="border rounded-xl-xl overflow-hidden max-w-lg w-full">
       <Image
         src={imageUrl}
         alt={`Image for ${imageUrl}`}
