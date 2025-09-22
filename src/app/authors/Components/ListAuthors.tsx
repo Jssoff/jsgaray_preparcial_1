@@ -71,7 +71,7 @@ export default function AuthorList({
           )}
 
           {author.birthDate && (
-            <p className="text-sm text-gray-500">
+            <p>
               Fecha de nacimiento:{' '}
               {new Date(author.birthDate).toLocaleDateString()}
             </p>
