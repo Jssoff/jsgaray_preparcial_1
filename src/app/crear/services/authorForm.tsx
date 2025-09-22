@@ -16,7 +16,12 @@ const schema = z.object({
 type FormFields = z.infer<typeof schema>;
 
 export const AuthorForm = () => {
-  const {register,handleSubmit,setError,formState: { errors, isSubmitting },} = useForm<FormFields>({
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm<FormFields>({
     defaultValues: {
       name: '',
       description: '',
@@ -57,21 +62,21 @@ export const AuthorForm = () => {
           {...register('name')}
           type="text"
           placeholder="Nombre del autor"
-          className="border border-gray-300 p-2"
+          className="bg-[#F39F9F] text-white placeholder:text-white py-2 px-4 rounded"
         />
         {errors.name && <span className="text-red-500">{errors.name.message}</span>}
 
         <textarea
           {...register('description')}
           placeholder="Descripción"
-          className="border border-gray-300 p-2"
+          className="bg-[#F39F9F] text-white placeholder:text-white py-2 px-4 rounded"
         />
         {errors.description && <span className="text-red-500">{errors.description.message}</span>}
 
         <input
           {...register('birthDate')}
           type="date"
-          className="border border-gray-300 p-2"
+          className="bg-[#F39F9F] text-white placeholder:text-white py-2 px-4 rounded"
         />
         {errors.birthDate && <span className="text-red-500">{errors.birthDate.message}</span>}
 
@@ -79,7 +84,7 @@ export const AuthorForm = () => {
           {...register('image')}
           type="url"
           placeholder="URL de la imagen"
-          className="border border-gray-300 p-2"
+          className="bg-[#F39F9F] text-white placeholder:text-white py-2 px-4 rounded"
         />
         {errors.image && <span className="text-red-500">{errors.image.message}</span>}
 

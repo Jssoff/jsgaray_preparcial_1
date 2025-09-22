@@ -44,7 +44,7 @@ export default function EditAuthors({ author, onCancel, onSave, onSuccess }: Pro
     register,
     handleSubmit,
     reset,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(authorSchema),
     defaultValues: {
