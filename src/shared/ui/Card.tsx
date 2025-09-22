@@ -1,29 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
 
-// 1. We define the contract. Our Card component MUST have these three properties.
 interface CardProps {
-  title: string;
-  description: string;
   imageUrl: string;
 }
 
-// 2. Our component now accepts a ‘props' object that conforms to the CardProps shape.
-const Card = ({ title, description, imageUrl }: CardProps) => {
+const Card = ({ imageUrl }: CardProps) => {
   return (
-    <div className="border rounded-lg shadow-lg overflow-hidden max-w-sm">
-      {/* 3. We use props to render dynamic content. */}
+    <div className="border rounded-xl shadow-xl overflow-hidden max-w-lg w-full">
       <Image
         src={imageUrl}
-        alt={`Imagen para ${title}`}
-        width={500} // Usamos dimensiones genéricas para el layout
-        height={300}
-        className="w-full h-48 object-cover"
+        alt={`Image for ${imageUrl}`}
+        width={900}
+        height={600}
+        className="w-full h-80 object-cover" 
       />
-      <div className="p-4">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-gray-700">{description}</p>
-      </div>
     </div>
   );
 };

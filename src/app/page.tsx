@@ -3,32 +3,26 @@ import Card from "@/shared/ui/Card";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-12">
-      <h1 className="text-4xl font-bold mb-12">Explora Nuestros Contenidos</h1>
+      <h1 className="text-4xl font-bold mb-12 text-center">
+        ¡Explora los mejores autores y sus más destacadas obras!
+      </h1>
 
-      {/* We use a Tailwind grid to organize the cards. */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="flex flex-col md:flex-row items-center gap-12">
+        {/* Card a la izquierda */}
+        <Card imageUrl="/images/gatoLector.jpg" />
 
-        {/* Instance 1 of the component Card */}
-        <Card
-          title="Explorando React"
-          description="Una introducción profunda a la librería de UI más popular del mundo."
-          imageUrl="/images/1.jpeg" // Asumimos que esta imagen está en public/images/
-        />
-
-        {/* Instance 2 of the component Card */}
-        <Card
-          title="El Poder de Next.js"
-          description="Descubre por qué Next.js es el framework de elección para aplicaciones de producción."
-          imageUrl="/images/2.jpeg"
-        />
-
-        {/* Instance 3 of the component Card */}
-        <Card
-          title="La Seguridad de TypeScript"
-          description="Añade un sistema de tipos a tu JavaScript para construir aplicaciones más robustas."
-          imageUrl="/images/3.jpeg"
-        />
-
+        {/* Texto a la derecha */}
+        <div className="max-w-md text-center md:text-left">
+          <h2 className="text-3xl font-bold mb-4 text-yellow-400">
+          
+            Explora nuevos mundos con nuestros libros.
+          </h2>
+          <p className="bg-[#F39F9F] text-black p-4 shadow-md">
+            Sumérgete en historias fascinantes y descubre autores que 
+            te transportarán a universos llenos de magia, misterio y 
+            conocimiento.
+          </p>
+        </div>
       </div>
     </main>
   );
