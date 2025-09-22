@@ -1,6 +1,6 @@
 "use client";
 
-import { AuthorForm } from "@/app/crear/services/authorForm";
+import { AuthorForm } from "@/app/crear/Components/authorForm";
 
 export default function CreateAuthorPage() {
   return (
